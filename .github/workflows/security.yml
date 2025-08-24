@@ -25,3 +25,20 @@ jobs:
           args: --file=app/package.json
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  container_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build a Docker image
+        run: docker build -t vuln-webapp .
+
+      - name: Run Snyk to check Docker image for vulnerabilities
+        continue-on-error: true
+        uses: snyk/actions/docker@0.4.0
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: vuln-webapp
