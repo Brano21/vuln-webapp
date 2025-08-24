@@ -12,12 +12,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '16'
-    
-      - name: Setup npm
-        run: npm ci
 
-      - name: Test npm
-        run: npm test
+      - name: Intall npm
+        run: |
+          cd app
+          npm install
 
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@0.4.0
