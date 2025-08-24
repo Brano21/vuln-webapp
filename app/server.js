@@ -10,7 +10,7 @@ const _ = require('lodash'); // vulnerable version on purpose
 const marked = require('marked'); // old XSS-prone version on purpose
 
 // Hard-coded secret (bad)
-const HARDCODED_ADMIN_PASSWORD = "admin123";
+const HARDCODED_ADMIN_PASSWORD = "admin12345";
 
 // Load env (and leak secrets into image - on purpose)
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
