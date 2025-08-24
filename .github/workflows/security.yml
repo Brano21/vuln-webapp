@@ -22,6 +22,7 @@ jobs:
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@0.4.0
         continue-on-error: true
-        args: --file=app/package.json
+        with:
+          args: --file=app/package.json
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
