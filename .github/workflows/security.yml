@@ -68,3 +68,17 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://localhost:9000'
           cmd_options: '-a'
+
+    iac_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v4
+
+      - name: Run Snyk to check configuration files for security issues
+        uses: snyk/actions/iac@0.4.0
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          file: iac/main.tf
