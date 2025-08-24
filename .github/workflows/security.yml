@@ -1,0 +1,28 @@
+name: Security with Snyk
+on: push
+
+jobs:
+  open-source_packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+    
+      - name: Setup npm
+        run: npm ci
+
+      - name: Test npm
+        run: npm test
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@0.4.0
+        continue-on-error: true
+        args:
+          --file=app/package.json
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
