@@ -1,5 +1,8 @@
 name: Security with Snyk
-on: push
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
   open-source_packages:
