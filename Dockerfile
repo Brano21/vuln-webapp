@@ -1,6 +1,6 @@
 
 # Intentionally vulnerable / bad practices
-FROM node:16-bullseye
+FROM node:24.6.0-bullseye
 
 # Run as root (bad), install extra packages (increase attack surface), no pinning
 RUN apt-get update && apt-get install -y curl git && rm -rf /var/lib/apt/lists/*
