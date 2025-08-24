@@ -10,9 +10,9 @@
     "start:dev": "nodemon app/server.js"
   },
   "dependencies": {
-    "express": "4.16.0",
-    "lodash": "4.17.11",
-    "marked": "0.3.6",
+    "express": "4.20.0",
+    "lodash": "4.17.21",
+    "marked": "0.3.18",
     "dotenv": "6.2.0"
   }
 }
